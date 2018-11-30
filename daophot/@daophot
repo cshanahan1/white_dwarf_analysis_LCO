@@ -1,0 +1,17 @@
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  daophot.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  pckpsf.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  find.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  fotometry.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  psf.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  peak.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  nstar.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  fudge.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  addstar.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  substar.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  group.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  sort.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  lnxsubs.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  fitsubs64.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  iosubs.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64  mathsubs.f
+g77 -fbounds-check -fno-underscoring -o daophot_sky daophot.o pckpsf.o find.o fotometry.o psf.o peak.o nstar.o fudge.o addstar.o substar.o group.o sort.o lnxsubs.o iosubs.o mathsubs.o fitsubs64.o libcfitsio.a -lm

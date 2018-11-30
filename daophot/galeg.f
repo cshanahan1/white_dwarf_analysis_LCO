@@ -1,0 +1,24 @@
+      FUNCTION GALEG(H,SIG,XA,X0)
+C     
+C     	CALCOLA L' INTEGRALE BIDIMENSIONALE DI UNA
+C     	GAUSSIANA BIDIMENSIONALE IN UN PIXEL CON IL METODO
+C     	DI GAUSS-LEGENDRE
+C     
+C     	H       = ALTEZZA         GAUSSIANA
+C     	SIG     = SIGMA               "
+C     	X0      = COORD. CENTRO       "
+C       XA      = COORD. INIZIALI DI INTEGRAZIONE
+C     
+      DIMENSION HE(3),HX(3)
+      DATA HX/-.774597,0.,.774597/
+      DATA HE/.555555,.888889,.555555/
+      PSF(H,X,X0,SIG)=H*EXP(-4*ALOG(2.)*(X-X0)**2/SIG**2)
+      XB=XA+1
+      VT=0.
+      DO I=1,3
+        XT=.5*(HX(I)+XB+XA)
+        VT=VT+HE(I)*PSF(H,XT,X0,SIG)
+      END DO
+      GALEG=VT/2.
+      RETURN
+      END

@@ -1,0 +1,7 @@
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 allstar.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 allstsubs.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 fitsubs64.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 lnxsubs.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 iosubs.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 mathsubs.f
+g77  -fbounds-check -fno-underscoring -o allstar allstar.o allstsubs.o fitsubs64.o lnxsubs.o iosubs.o mathsubs.o libcfitsio.a -lm

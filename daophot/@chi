@@ -1,0 +1,5 @@
+f77 -c  -O2  -D_FILE_OFFSET_BITS=64 chi.f
+f77 -c  -O2  -D_FILE_OFFSET_BITS=64 iosubs.f
+f77 -c  -O2  -D_FILE_OFFSET_BITS=64 mathsubs.f
+f77 -c  -O2  -D_FILE_OFFSET_BITS=64 hpsubs.f
+f77 -fbounds-check -fno-underscoring -o chi chi.o iosubs.o mathsubs.o hpsubs.o -lm

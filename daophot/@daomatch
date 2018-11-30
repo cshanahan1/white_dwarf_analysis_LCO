@@ -1,0 +1,6 @@
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 daomatch.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 iosubs.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 mathsubs.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 lnxsubs.f
+g77 -fbounds-check -funderscoring -o daomatch daomatch.o iosubs.o mathsubs.o lnxsubs.o
+ 

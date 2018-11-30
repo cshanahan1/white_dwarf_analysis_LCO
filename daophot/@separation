@@ -1,0 +1,5 @@
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 separation.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 lnxsubs.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 iosubs.f
+g77 -c  -O2  -D_FILE_OFFSET_BITS=64 mathsubs.f
+g77 -fbounds-check -fno-underscoring -o separation separation.o lnxsubs.o iosubs.o mathsubs.o -lm

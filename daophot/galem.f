@@ -1,0 +1,25 @@
+	FUNCTION GALEM (H,SIG,BET,XA,X0)
+C
+C	CALCOLA L' INTEGRALE monoDIMENSIONALE DI UNA
+C	CURVA DI MOFFAT IN UN PIXEL CON IL METODO
+C	DI GAUSS-LEGENDRE
+C
+C	H       = ALTEZZA       CURVA DI MOFFAT
+C	SIG     = R               "    "    "
+C	BET     = BETA            "    "    "
+C	X0      = COORD. CENTRO   "    "    "
+C       XA      = COORD. INIZIALE di INTEGRAZIONE
+C
+	DIMENSION HE(3),HX(3)
+	DATA HX/-.774597,0.,.774597/
+	DATA HE/.555555,.888889,.555555/
+	PSF(H,X,X0,SIG,BET)=H*(1+(X-X0)**2/SIG**2)**(-BET)
+	XB=XA+1
+	VT=0.      
+	DO I=1,3
+	XT=.5*(HX(I)+XB+XA)      
+	VT=VT+HE(I)*PSF(H,XT,X0,SIG,BET)      
+	END DO      
+	GALEM=VT/2.
+	RETURN      
+	END      
