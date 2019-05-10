@@ -13,7 +13,6 @@ def make_var_index_2_panel_plot(targname, WD_tab, close_mag_tab, phot_tab, plot_
 	unstable_star_idx = close_mag_tab[unstable_star_idx]['star_id']
 
 	ref_file = os.path.basename(glob.glob(fits_dir+'*.mag')[0].replace('.mag','.fits'))
-	ref_file = 'fl15201707270183e91.fits'
 
 	#pick most unstable star
 	most_unstable_star_tab = phot_tab[phot_tab['star_id'] == unstable_star_idx]
@@ -27,11 +26,15 @@ def make_var_index_2_panel_plot(targname, WD_tab, close_mag_tab, phot_tab, plot_
 
 	### PANEL 1 ###
 
-
 	#sort by var index, index to clip outliers
 	phot_tab.sort('var_index')
 	ref_phot_output_tab = phot_tab[phot_tab['mag_'+ref_file.replace('.fits','')] != 99.9999][0:-25]
 
+	#make ylim the same for both
+	max_ws_index = max(ref_phot_output_tab['var_index'])
+
+	ax1.set_ylim(0, max_ws_index*5.)
+	ax2.set_ylim(0, max_ws_index*5.)
 	
 	#scatter plot of variability index of all stars in reference image
 	ax1.scatter(ref_phot_output_tab['mag_'+ref_file.replace('.fits','')],ref_phot_output_tab['var_index'], c= 'k',s = 10,label = 'ref image stars')
@@ -91,12 +94,12 @@ if __name__ == '__main__':
 		 		'SDSSJ232941.330+001107.755','SDSSJ235144.29+375542.6','WD0554-165']
 
 
-	for targname in ['SDSSJ210150.65-054550.9']:
+	for targname in all_23_targs:
 		print(targname)
-		WD_tab = '/Users/cshanahan/Desktop/clean_desktop/WD_project/redo_final_ver/23_northern_targets/psf_phot/{}/plots_and_output/WD_tab.csv'.format(targname)
-		phot_tab = '/Users/cshanahan/Desktop/clean_desktop/WD_project/redo_final_ver/23_northern_targets/psf_phot/{}/plots_and_output/{}_phot_output.txt'.format(targname, targname)
-		plot_output_dir = '/Users/cshanahan/Desktop/clean_desktop/WD_project/output_for_paper/23_northern/var_index_plots/'
-		close_mag_tab = '/Users/cshanahan/Desktop/clean_desktop/WD_project/redo_final_ver/23_northern_targets/psf_phot/{}/plots_and_output/close_mag_tab.csv'.format(targname)
-		fits_dir = '/Users/cshanahan/Desktop/clean_desktop/WD_project/redo_final_ver/23_northern_targets/psf_phot/{}/'.format(targname)
+		WD_tab = '/Users/cshanahan/Desktop/white_dwarf_analysis_LCO/processed_data/23_northern_targets/psf_phot/{}/plots_and_output/WD_tab.csv'.format(targname)
+		phot_tab = '/Users/cshanahan/Desktop/white_dwarf_analysis_LCO/processed_data/23_northern_targets/psf_phot/{}/plots_and_output/{}_phot_output.txt'.format(targname, targname)
+		plot_output_dir = '/Users/cshanahan/Desktop/white_dwarf_analysis_LCO/output_for_paper/23_northern/var_index_plots/'
+		close_mag_tab = '/Users/cshanahan/Desktop/white_dwarf_analysis_LCO/processed_data/23_northern_targets/psf_phot/{}/plots_and_output/close_mag_tab.csv'.format(targname)
+		fits_dir = '/Users/cshanahan/Desktop/white_dwarf_analysis_LCO/processed_data/23_northern_targets/psf_phot/{}/'.format(targname)
 
 		make_var_index_2_panel_plot(targname, WD_tab, close_mag_tab, phot_tab, plot_output_dir, fits_dir, unstable_star_idx=-1, stable_star_idx=0)
