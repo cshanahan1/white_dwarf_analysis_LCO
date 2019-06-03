@@ -69,6 +69,8 @@ def parse_output_files_to_photcat(targname, ref_file_path, mch_file_path, cor_fi
 
                 mean_mag_weighted = np.average(filtered_mags, weights = filtered_errs)
                 chi2_nu = np.sum((1/filtered_errs**2) * ((filtered_mags - mean_mag_weighted)**2))/(len(filtered_mags)-1)
+                if chi2_nu > 100:
+                    print(chi2_nu, var_indicies[k], filtered_mags, filtered_errs)
                 
                 ff.write('{0},{1},{2},{3},{4},{5},{6},{7},{8},'.format(star_ids[k],var_indicies[k],str(chi2_nu),star_xs[k],star_ys[k],star_ras[k],stars_dec[k],star_chis[k],star_sharps[k]))
                 ff.write(','.join(star_magss[k]))

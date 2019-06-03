@@ -303,8 +303,8 @@ def main_run_LCO_photometry_pipeline(obj_dir, full_reset = False, rerun_daophot 
 if __name__ == '__main__':
 
 	#List of directories that contain data for processing. Should be sorted by object. 
-	dirs = glob.glob('/Users/cshanahan/Desktop/clean_desktop/WD_project/redo_final_ver/23_northern_targets/psf_phot/SDSSJ130234.43+101238.9')
+	dirs = glob.glob('/Users/cshanahan/Desktop/white_dwarf_analysis_LCO/processed_data/23_northern_targets/psf_phot/SDSSJ131445.050-031415.588')
 	
 	for dir in dirs:
-		main_run_LCO_photometry_pipeline(format_path(dir), full_reset = True, rerun_daophot = False)
+		main_run_LCO_photometry_pipeline(format_path(dir), full_reset = False, rerun_daophot = True)
 		

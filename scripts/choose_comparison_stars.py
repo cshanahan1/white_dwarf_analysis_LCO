@@ -206,7 +206,7 @@ def main_choose_comparison_stars(targname, base_path, plot_output_dir,
 
 if __name__ == '__main__':
 
- 	targs = glob.glob('/Users/cshanahan/Desktop/clean_desktop/WD_project/redo_final_ver/23_northern_targets/psf_phot/*/')
+ 	targs = glob.glob('/Users/cshanahan/Desktop/white_dwarf_analysis_LCO/processed_data/23_northern_targets/psf_phot/SDSSJ131445*/')
 	# targs = glob.glob('/Users/cshanahan/Desktop/clean_desktop/WD_project/redo_final_ver/southern_targs/new_psf_phot/W*/')
 	# targs = targs + glob.glob('/Users/cshanahan/Desktop/clean_desktop/WD_project/redo_final_ver/southern_targs/new_psf_phot/S*/')
 	# targs = targs + glob.glob('/Users/cshanahan/Desktop/clean_desktop/WD_project/redo_final_ver/southern_targs/new_psf_phot/A*/')
